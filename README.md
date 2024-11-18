@@ -1,7 +1,22 @@
-# Translator-tur
+import discord
+from discord.ext import commands
+from token import token
 
-Benim tercümanım!
+intents = discord.Intents.default()
+intents.message_content = True
 
-Bu çeviri uygulaması farklı dillerden kelimeler öğrenmenizi sağlayacak!
+bot = commands.Bot(command_prefix='$', intents=intents)
 
-main.py dosyasını açın ve kodu iyice gözden geçirin!
+@bot.event
+async def merhaba():
+    print(f'merhaba ben temizlik botuyum çevre temizliği çok önemli')
+
+@bot.command()
+async def kirli(ctx):
+    await ctx.send(f'fabrika bacalarına filtre takılması lazım')
+
+@bot.command()
+async def temiz(ctx):
+    await ctx.send(f'mükemmel')
+
+bot.run(token)
